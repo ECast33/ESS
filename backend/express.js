@@ -25,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
+app.all('/*', function(req, res) {
+  res.sendFile(path.resolve(__dirname , '../frontend/index.html')); // or the name of your angular app html file
+});
 // app.use('/', routes);
 app.use('/api',  routes );
 
